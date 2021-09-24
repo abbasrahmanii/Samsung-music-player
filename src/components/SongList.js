@@ -34,10 +34,11 @@ const SongList = ({
 const Song = styled.div`
   width: 95%;
   margin: 1.5rem auto;
-  background-color: #76cec22e;
+  background: linear-gradient(to right, #76cec22e, #76999484);
   border-radius: 15px;
   display: flex;
   flex-direction: row;
+  cursor: pointer;
   img {
     width: 5rem;
     height: 5rem;
