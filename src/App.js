@@ -29,11 +29,37 @@ function App() {
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
+    const roundedCurrent = Math.round(current);
+    const roundedDuration = Math.round(duration);
+    const animation = Math.round((roundedCurrent / roundedDuration) * 100);
     setSongInfo({
       ...songInfo,
       currentTime: current,
       duration,
+      animation,
     });
+  };
+
+  const skipTrackHandler = async (direction) => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    if (direction === "next") {
+      await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    }
+    if (direction === "prev") {
+      if ((currentIndex - 1) % songs.length === -1) {
+        await setCurrentSong(songs[songs.length - 1]);
+        if (isPlaying) audioRef.current.play();
+        return;
+      }
+      await setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+    }
+    if (isPlaying) audioRef.current.play();
+  };
+
+  const songEndHandler = async () => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    if (isPlaying) audioRef.current.play();
   };
 
   return (
@@ -53,14 +79,21 @@ function App() {
             audioRef={audioRef}
             playSongHandler={playSongHandler}
             timeUpdateHandler={timeUpdateHandler}
+            skipTrackHandler={skipTrackHandler}
           />
         </Route>
         <Route path="/player">
           <Player
             currentSong={currentSong}
+            setCurrentSong={setCurrentSong}
             isPlaying={isPlaying}
             playSongHandler={playSongHandler}
             songInfo={songInfo}
+            audioRef={audioRef}
+            setSongInfo={setSongInfo}
+            skipTrackHandler={skipTrackHandler}
+            songs={songs}
+            setSongs={setSongs}
           />
         </Route>
       </Switch>
@@ -69,6 +102,7 @@ function App() {
         src={currentSong.audio}
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}
+        onEnded={songEndHandler}
       ></audio>
     </div>
   );

@@ -16,10 +16,8 @@ const Landing = ({
   isPlaying,
   setIsPlaying,
   audioRef,
-  songInfo,
-  setSongInfo,
   playSongHandler,
-  timeUpdateHandler,
+  skipTrackHandler,
 }) => {
   return (
     <LandingPage>
@@ -49,14 +47,22 @@ const Landing = ({
         </div>
         <PlayController>
           <li>
-            <FontAwesomeIcon size="2x" icon={faChevronLeft} />
+            <FontAwesomeIcon
+              size="2x"
+              icon={faChevronLeft}
+              onClick={() => skipTrackHandler("prev")}
+            />
           </li>
           <FontAwesomeIcon
             icon={isPlaying ? faPause : faPlay}
             onClick={playSongHandler}
           />
           <li>
-            <FontAwesomeIcon size="2x" icon={faChevronRight} />
+            <FontAwesomeIcon
+              size="2x"
+              icon={faChevronRight}
+              onClick={() => skipTrackHandler("next")}
+            />
           </li>
         </PlayController>
       </Footer>

@@ -9,6 +9,13 @@ const GlobalStyles = createGlobalStyle`
     ul{
         list-style: none;
     }
+    a{
+        color: #111;
+        text-decoration: none;
+    }
+    input:focus{
+        outline: none;
+    }
 `;
 
 export default GlobalStyles;

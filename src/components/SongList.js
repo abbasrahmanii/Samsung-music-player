@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { playAudio } from "../util";
 
 const SongList = ({
   song,
@@ -14,12 +15,7 @@ const SongList = ({
     const selectedSong = songs.filter((state) => state.id === id);
     setCurrentSong(selectedSong[0]);
 
-    const PlayPromise = audioRef.current.play();
-    if (PlayPromise !== undefined) {
-      PlayPromise.then((audio) => {
-        audioRef.current.play();
-      });
-    }
+    playAudio(isPlaying, audioRef);
 
     setIsPlaying(true);
   };

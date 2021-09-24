@@ -15,10 +15,10 @@ const Nav = () => {
         <h1>SAMSUNG Music</h1>
         <div>
           <Link to="/player">
-            <FontAwesomeIcon icon={faMusic} />
+            <FontAwesomeIcon size="2x" icon={faMusic} />
           </Link>
-          <FontAwesomeIcon icon={faSearch} />
-          <FontAwesomeIcon icon={faEllipsisV} />
+          <FontAwesomeIcon size="2x" icon={faSearch} />
+          <FontAwesomeIcon size="2x" icon={faEllipsisV} />
         </div>
       </Header>
       <Navbar>
@@ -62,10 +62,13 @@ const Header = styled.header`
   margin: 1rem auto;
   color: #272525;
   div {
-    width: 5%;
+    width: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    svg {
+      /* padding: 0.5rem; */
+    }
   }
 `;
 
