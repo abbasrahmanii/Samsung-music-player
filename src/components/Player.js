@@ -178,11 +178,11 @@ const Control = styled.div`
       width: 100%;
       background-color: transparent;
       cursor: pointer;
-      --webkit-appearance: none;
+      -webkit-appearance: none;
       ::-webkit-slider-thumb {
-        --webkit-appearance: none;
-        width: 0.5rem;
-        height: 0.5rem;
+        -webkit-appearance: none;
+        width: 1rem;
+        height: 1rem;
       }
       ::-moz-range-thumb {
         -webkit-appearance: none;

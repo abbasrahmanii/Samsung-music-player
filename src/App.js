@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Landing from "./components/Landing";
 import Nav from "./components/Nav";
 import GlobalStyles from "./components/GlobalStyles";
@@ -65,38 +65,47 @@ function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      <Switch>
-        <Route path="/" exact>
-          <Nav />
-          <Landing
-            songs={songs}
-            currentSong={currentSong}
-            setCurrentSong={setCurrentSong}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-            songInfo={songInfo}
-            setSongInfo={setSongInfo}
-            audioRef={audioRef}
-            playSongHandler={playSongHandler}
-            timeUpdateHandler={timeUpdateHandler}
-            skipTrackHandler={skipTrackHandler}
-          />
-        </Route>
-        <Route path="/player">
-          <Player
-            currentSong={currentSong}
-            setCurrentSong={setCurrentSong}
-            isPlaying={isPlaying}
-            playSongHandler={playSongHandler}
-            songInfo={songInfo}
-            audioRef={audioRef}
-            setSongInfo={setSongInfo}
-            skipTrackHandler={skipTrackHandler}
-            songs={songs}
-            setSongs={setSongs}
-          />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <>
+              <Nav />
+              <Landing
+                songs={songs}
+                currentSong={currentSong}
+                setCurrentSong={setCurrentSong}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+                songInfo={songInfo}
+                setSongInfo={setSongInfo}
+                audioRef={audioRef}
+                playSongHandler={playSongHandler}
+                timeUpdateHandler={timeUpdateHandler}
+                skipTrackHandler={skipTrackHandler}
+              />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/player"
+          element={
+            <Player
+              currentSong={currentSong}
+              setCurrentSong={setCurrentSong}
+              isPlaying={isPlaying}
+              playSongHandler={playSongHandler}
+              songInfo={songInfo}
+              audioRef={audioRef}
+              setSongInfo={setSongInfo}
+              skipTrackHandler={skipTrackHandler}
+              songs={songs}
+              setSongs={setSongs}
+            />
+          }
+        />
+      </Routes>
       <audio
         ref={audioRef}
         src={currentSong.audio}

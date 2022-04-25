@@ -34,7 +34,7 @@ const SongList = ({
 const Song = styled.div`
   width: 95%;
   margin: 1.5rem auto;
-  background: linear-gradient(to right, #76cec22e, #76999484);
+  background: linear-gradient(to right, #97d4c165, #769989ab);
   border-radius: 15px;
   display: flex;
   flex-direction: row;

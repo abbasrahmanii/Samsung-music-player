@@ -8,6 +8,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Landing = ({
   songs,
@@ -38,13 +39,13 @@ const Landing = ({
         </ul>
       </Main>
       <Footer>
-        <div>
+        <Link to="/player">
           <img src={currentSong.cover} alt="img" />
           <div>
             <h2>{currentSong.name}</h2>
             <p>{currentSong.artist}</p>
           </div>
-        </div>
+        </Link>
         <PlayController>
           <li>
             <FontAwesomeIcon
@@ -108,8 +109,8 @@ const Footer = styled.footer`
   padding: 0 1rem;
   border-radius: 75px;
   border: 2px solid blueviolet;
-  div {
-    width: 95%;
+  a {
+    width: 85%;
     margin: 0.5rem auto;
     border-radius: 15px;
     display: flex;

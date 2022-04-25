@@ -13,13 +13,13 @@ const Nav = () => {
     <NavStyle>
       <Header>
         <h1>SAMSUNG Music</h1>
-        <div>
+        <nav>
           <Link to="/player">
             <FontAwesomeIcon size="2x" icon={faMusic} />
           </Link>
           <FontAwesomeIcon size="2x" icon={faSearch} />
           <FontAwesomeIcon size="2x" icon={faEllipsisV} />
-        </div>
+        </nav>
       </Header>
       <Navbar>
         <ul>
@@ -61,7 +61,7 @@ const Header = styled.header`
   width: 90%;
   margin: 1rem auto;
   color: #272525;
-  div {
+  nav {
     width: 10%;
     display: flex;
     justify-content: space-between;
